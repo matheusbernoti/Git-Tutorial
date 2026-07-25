@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Acesso Restrito</title>
+    
+    <!-- Importando a fonte Inter do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Importando ícones do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Reset de estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Fundo da página com um gradiente moderno */
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        /* O cartão (card) de login */
+        .login-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Cabeçalho do formulário */
+        .login-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .login-header h2 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        /* Grupos de inputs (ícone + campo de texto) */
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .input-group i.fa-envelope, 
+        .input-group i.fa-lock {
+            left: 15px;
+        }
+
+        .input-group i.toggle-password {
+            right: 15px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .input-group i.toggle-password:hover {
+            color: #667eea;
+        }
+
+        /* Estilização dos campos de input */
+        .input-group input {
+            width: 100%;
+            padding: 14px 45px;
+            border: 1px solid #e1e5ee;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            background-color: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        /* Efeito quando o input está selecionado (focado) */
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Ações extras: Lembrar de mim e Esqueci a senha */
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: #667eea; /* Cor da caixa de seleção */
+        }
+
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Botão principal de login */
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Rodapé de cadastro */
+        .login-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .login-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .login-footer a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Bem-vindo de volta</h2>
+            <p>Por favor, insira seus dados para continuar</p>
+        </div>
+
+        <form action="#" method="POST">
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="email" placeholder="Seu endereço de e-mail" required autocomplete="email">
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Sua senha secreta" required autocomplete="current-password">
+                <!-- Ícone para mostrar/ocultar senha -->
+                <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
+            </div>
+
+            <div class="form-actions">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember"> Lembrar de mim
+                </label>
+                <a href="#" class="forgot-password">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Entrar na Conta</button>
+        </form>
+
+        <div class="login-footer">
+            <p>Ainda não tem uma conta? <a href="#">Cadastre-se agora</a></p>
+        </div>
+    </div>
+
+    <!-- Script para alternar a visibilidade da senha -->
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function (e) {
+            // Alterna o atributo type entre 'password' e 'text'
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            
+            // Alterna o ícone (olho aberto/fechado)
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+
+</body>
+</html>
